@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Object Detection System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/css/index.css">
+
+</head>
+
+<body>
+    <div class="header shadow sticky-top">
+        <p class="text-center header_text">Object Detection System</p>
+        <nav class="nav_home">
+            <ul>
+                <li><button class="btn nav_btn active" onclick="location.href='/';">Home</button></li>
+                <li><button class="btn nav_btn" onclick="location.href='/results';">Results</button></li>
+            </ul>
+        </nav>
+    </div>
+    <div class=" d-flex align-items-center justify-content-center content_container">
+        <div class="row margin_top50">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="card shadow upload-form">
+                    <div class="card-body">
+                        <center><label class="card-title text-center">Upload Image</label></center>
+                        <form action="upload" method="post" enctype="multipart/form-data">
+                            <div class="form-group margin_top50">
+                                <h5 for="file-upload">Choose file</h5>
+                                <input type="file" name="file" id="inputFile1" class="form-control-file"
+                                    accept=".png, .jpg, .jpeg" onchange="validateFile()">
+                                <div id="file-error" style="display:none; color:red;">Invalid file type. Please select a
+                                    PNG, JPG, or JPEG file.</div>
+                            </div>
+                            <button disabled id="submit-btn" type="submit"
+                                class="btn btn-primary btn-block margin_top50">Detect
+                                Image</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+
+                <img class="card" id="imagen">
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function init() {
+            var inputFile = document.getElementById('inputFile1');
+            inputFile.addEventListener('change', mostrarImagen, false);
+        }
+        function mostrarImagen(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                var img = document.getElementById('imagen');
+                img.src = event.target.result;
+                img.width = 400;
+                img.height = 400;
+                var submitBtn = document.getElementById('submit-btn');
+                if (img.src != '') {
+                    submitBtn.disabled = false;
+                } else {
+                    submitBtn.disabled = true;
+                }
+            }
+            reader.readAsDataURL(file);
+        }
+        window.addEventListener('load', init, false);
+
+        function validateFile() {
+            const inputFile = document.getElementById('inputFile1');
+            const fileName = inputFile.value;
+            const allowedExtensions = /(\.png|\.jpg|\.jpeg)$/i;
+            const fileError = document.getElementById('file-error');
+
+            if (!allowedExtensions.exec(fileName)) {
+                fileError.style.display = 'block';
+                inputFile.value = '';
+                return false;
+            } else {
+                fileError.style.display = 'none';
+                return true;
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

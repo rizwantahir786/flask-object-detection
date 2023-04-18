@@ -1,0 +1,101 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+.header {
+    background-color: #111010;
+    padding: 20px;
+    text-align: center;
+}
+
+.content_container {
+    height: 80vh;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.upload-form label {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.upload-form input[type="file"] {
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 5px #ccc;
+    margin-bottom: 20px;
+}
+
+.upload-form button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-form button:hover {
+    background-color: #3e8e41;
+}
+
+.shadow {
+    box-shadow: 2px 2px 5px #888888;
+}
+
+/* Text styling */
+.header_text {
+    color: white;
+    font-size: 35px;
+}
+
+.margin_top50 {
+    margin-top: 50px;
+}
+
+.card {
+    height: 400px;
+    width: 400px;
+    border-radius: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+.nav_btn {
+    background-color: #fff;
+    color: #212121;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.active {
+    background-color: #007bff;
+    color: #fff;
+}

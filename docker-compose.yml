@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build: .
+    ports:
+      - 5000:5000
+      
+  tensorflow_serving_container:
+    runtime: nvidia
+    image: tensorflow/serving:latest-gpu
+    ports:
+      - 8500:8500
+    environment:
+      - MODEL_NAME=tensorflow_serving_container
+    volumes:
+      - /home/msc1/Desktop/Labs/Semester_2/7147COMP/course_work/saved_model:/models/tensorflow_serving_container
