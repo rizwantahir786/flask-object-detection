@@ -1,90 +1,104 @@
+/* Set font and margin for the whole page */
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
 }
 
+/* Header styling */
 .header {
-    background-color: #111010;
-    padding: 20px;
-    text-align: center;
+    background-color: #111010; 
+    padding: 20px; 
+    text-align: center; 
 }
 
+/* Set container height for main content */
 .content_container {
     height: 80vh;
 }
 
+/* Styling for upload form */
 .upload-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
     border: 2px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    width: 100%;
-    max-width: 500px;
-    margin-bottom: 20px;
+    border-radius: 5px; 
+    padding: 20px; 
+    width: 100%; 
+    max-width: 500px; 
+    margin-bottom: 20px; 
 }
 
+/* Styling for form label */
 .upload-form label {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    font-weight: bold;
+    font-size: 1.2em; 
+    margin-bottom: 10px; 
+    font-weight: bold; 
 }
 
+/* Styling for file input */
 .upload-form input[type="file"] {
-    font-size: 1em;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0px 0px 5px #ccc;
-    margin-bottom: 20px;
+    font-size: 1em; 
+    padding: 10px; 
+    border-radius: 5px; 
+    border: none; 
+    box-shadow: 0px 0px 5px #ccc; 
+    margin-bottom: 20px; 
 }
 
+/* Styling for form submit button */
 .upload-form button {
     background-color: #4CAF50;
-    color: white;
-    font-size: 1.2em;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    color: white; 
+    font-size: 1.2em; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
 }
 
+/* Styling for form submit button when hovered over */
 .upload-form button:hover {
-    background-color: #3e8e41;
+    background-color: #3e8e41; 
 }
 
+/* Add shadow to an element */
 .shadow {
     box-shadow: 2px 2px 5px #888888;
 }
 
-/* Text styling */
+/* Header text styling */
 .header_text {
-    color: white;
-    font-size: 35px;
+    color: white; 
+    font-size: 35px; 
 }
 
+/* Add margin to top of an element */
 .margin_top50 {
     margin-top: 50px;
 }
 
+/* Card styling */
 .card {
-    height: 400px;
-    width: 400px;
-    border-radius: 10px;
+    height: 400px; 
+    width: 400px; 
+    border-radius: 10px; 
 }
 
+/* Navigation styling */
 nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
-
+/* Navigation element margin */
 nav li {
     margin: 0 10px;
 }
+
+/* Navigation button styling */
 
 .nav_btn {
     background-color: #fff;
@@ -95,7 +109,19 @@ nav li {
     font-size: 16px;
 }
 
+/* Navigation active button styling */
+
 .active {
     background-color: #007bff;
     color: #fff;
+}
+
+/* Style the error message with red text and border, hidden by default */
+#error-message {
+    display: none;
+    color: red;
+    border: 1px solid red;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
 }

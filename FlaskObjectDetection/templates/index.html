@@ -1,19 +1,31 @@
+<!-- html 5 -->
 <!DOCTYPE html>
 <html>
 
 <head>
+    <!-- To set the title of the page -->
     <title>Object Detection System</title>
+    <!-- To set the character encoding to utf-8 -->
     <meta charset="utf-8">
+    <!-- To set the viewport for the page to the width of the device and initial zoom level to 1 -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- To load the Open Sans font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <!--  To load the jQuery library from a CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- To load the Bootstrap CSS framework from a CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <!-- To load the Bootstrap JS library from a CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <!-- To load the custom stylesheet for the page from static directory -->
     <link rel="stylesheet" type="text/css" href="static/css/index.css">
-
 </head>
 
 <body>
+    <!-- Header for the page -->
     <div class="header shadow sticky-top">
         <p class="text-center header_text">Object Detection System</p>
+        <!-- Navigation bar with two buttons: Home and Results (to display all the results from firebase database) -->
         <nav class="nav_home">
             <ul>
                 <li><button class="btn nav_btn active" onclick="location.href='/';">Home</button></li>
@@ -21,32 +33,36 @@
             </ul>
         </nav>
     </div>
-    <div class=" d-flex align-items-center justify-content-center content_container">
+
+    <!-- main content section containing the upload form and preview image -->
+    <div class="d-flex align-items-center justify-content-center content_container">
         <div class="row margin_top50">
+            <!-- left column containing the upload form -->
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="card shadow upload-form">
                     <div class="card-body">
                         <center><label class="card-title text-center">Upload Image</label></center>
                         <form action="upload" method="post" enctype="multipart/form-data">
+                            <!-- file input field -->
                             <div class="form-group margin_top50">
                                 <h5 for="file-upload">Choose file</h5>
                                 <input type="file" name="file" id="inputFile1" class="form-control-file"
-                                    accept=".png, .jpg, .jpeg" onchange="validateFile()">
+                                    onchange="validateFile()">
+                                <!-- Error message to be displayed if an invalid file type is selected -->
                                 <div id="file-error" style="display:none; color:red;">Invalid file type. Please select a
                                     PNG, JPG, or JPEG file.</div>
                             </div>
+                            <!-- submit button that triggers the image detection process -->
                             <button disabled id="submit-btn" type="submit"
                                 class="btn btn-primary btn-block margin_top50">Detect
                                 Image</button>
                         </form>
                     </div>
-
                 </div>
             </div>
+            <!-- right column containing the preview image -->
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-
                 <img class="card" id="imagen">
-
             </div>
         </div>
     </div>
@@ -54,43 +70,68 @@
 
     <script>
         function init() {
+            // get the file input element by inputFile1
             var inputFile = document.getElementById('inputFile1');
+            // add a change event listener to the file input element
             inputFile.addEventListener('change', mostrarImagen, false);
         }
+
         function mostrarImagen(event) {
+            // get the selected file from the event object
             var file = event.target.files[0];
+            // create a new FileReader object
             var reader = new FileReader();
+            // define the onload function for the reader
             reader.onload = function (event) {
+                // get the image element by its id
                 var img = document.getElementById('imagen');
+                // set the source of the image element to the data URL of the selected file
                 img.src = event.target.result;
+                // set the width and height of the image element
                 img.width = 400;
                 img.height = 400;
+                // get the submit button element by its id
                 var submitBtn = document.getElementById('submit-btn');
+                // enable or disable the submit button based on whether an image has been selected
                 if (img.src != '') {
                     submitBtn.disabled = false;
                 } else {
                     submitBtn.disabled = true;
                 }
             }
+            // read the selected file as a data URL
             reader.readAsDataURL(file);
         }
+
+        // add an event listener for the window load event, which calls the init function
         window.addEventListener('load', init, false);
 
         function validateFile() {
+            // get the file input element by its id
             const inputFile = document.getElementById('inputFile1');
+            // get the file name from the file input element
             const fileName = inputFile.value;
+            // define a regular expression for allowed file extensions
             const allowedExtensions = /(\.png|\.jpg|\.jpeg)$/i;
+            // get the file error element by its id
             const fileError = document.getElementById('file-error');
 
+            // check whether the file name matches the allowed extensions
             if (!allowedExtensions.exec(fileName)) {
+                // display the file error element
                 fileError.style.display = 'block';
+                // clear the file input element
                 inputFile.value = '';
+                // return false to indicate that validation failed
                 return false;
             } else {
+                // hide the file error element
                 fileError.style.display = 'none';
+                // return true to indicate that validation succeeded
                 return true;
             }
         }
+
     </script>
 
 

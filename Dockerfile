@@ -14,8 +14,6 @@ RUN pip install tensorflow
 RUN pip install tensorflow-serving-api
 RUN pip install Flask-WTF 
 RUN pip install numpy
-RUN pip install pafy
-RUN pip install youtube_dl 
 RUN pip install Pillow
 RUN pip install matplotlib
 

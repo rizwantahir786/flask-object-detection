@@ -1,48 +1,55 @@
+/* Set the font family and remove margin from the body */
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
 }
 
+/* Style the header with a background color, padding, and center text */
 .header {
     background-color: #111010;
     padding: 20px;
     text-align: center;
 }
 
+/* Set the height of the container to 80% of the viewport height */
 .container {
     height: 80vh;
 }
 
-
+/* Add a shadow to an element */
 .shadow {
     box-shadow: 2px 2px 5px #888888;
 }
 
-/* Text styling */
+/* Style the header text with a white color and font size */
 .header_text {
     color: white;
     font-size: 35px;
 }
 
-
+/* Style the table header with a background color and white text */
 .table th {
     background-color: #111010;
     color: #fff;
 }
 
+/* Style the table cells with a white background color and dark text */
 .table td {
     background-color: #fff;
     color: #212121;
 }
 
+/* Add striped background to table rows */
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: #333333;
 }
 
+/* Style the pagination element with a top margin */
 .pagination {
     margin-top: 20px;
 }
 
+/* Style the pagination links with a white background, black text, and padding */
 .pagination li a {
     color: #fff;
     background-color: #111010;
@@ -52,22 +59,27 @@ body {
     margin-right: 5px;
 }
 
+/* Style the hover effect on pagination links */
 .pagination li a:hover {
     background-color: #212121;
 }
 
+/* Style the active page number in pagination */
 .pagination .active a {
     background-color: #212121;
 }
 
+/* Add a top margin to an element */
 .margin_top100 {
     margin-top: 100px;
 }
 
+/* Add a bottom padding to an element */
 .padding_bottom100 {
     padding-bottom: 100px;
 }
 
+/* Style the heading of a modal with a centered text and background color */
 .modal_body_heading {
     height: 50px; 
     display: flex;
@@ -78,15 +90,18 @@ body {
     margin-bottom: 20px;
 }
 
+/* Style the font of the heading of a modal */
 .modal_body_heading_font {
     color: white;
     font-size: 20px;
 }
 
+/* Add a top margin to an element */
 .margin_top20 {
     margin-top: 20px;
 }
 
+/* Style the navigation menu with no list style and flex display */
 nav ul {
     list-style: none;
     margin: 0;
@@ -94,10 +109,12 @@ nav ul {
     display: flex;
 }
 
+/* Style the navigation items with a margin */
 nav li {
     margin: 0 10px;
 }
 
+/* Style the navigation button with a white background, black text, and padding */
 .nav_btn {
     background-color: #fff;
     color: #212121;
@@ -107,8 +124,18 @@ nav li {
     font-size: 16px;
 }
 
+/* Style the active state of a navigation button with a blue background and white text */
 .active {
     background-color: #007bff;
     color: #fff;
 }
 
+/* Style the error message with red text and border, hidden by default */
+#error-message {
+    display: none;
+    color: red;
+    border: 1px solid red;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}

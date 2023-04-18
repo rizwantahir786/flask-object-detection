@@ -1,0 +1,105 @@
+<!-- html 5 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- To set the title of the page -->
+    <title>Object Detection System</title>
+    <!-- To set the character encoding to utf-8 -->
+    <meta charset="utf-8">
+    <!-- To set the viewport for the page to the width of the device and initial zoom level to 1 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- To load the Open Sans font from Google Fonts -->
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+     <!--  To load the jQuery library from a CDN -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <!-- To load the Bootstrap CSS framework from a CDN -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+     <!-- To load the Bootstrap JS library from a CDN -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+     <!-- To load the custom stylesheet for the page from static directory -->
+     <link rel="stylesheet" type="text/css" href="static/css/results.css">
+</head>
+
+<body>
+    <!-- Header for the page -->
+    <div class="header shadow sticky-top">
+        <p class="text-center header_text">Object Detection System</p>
+        <!-- Navigation bar with two buttons: Home and Results (to display all the results from firebase database) -->
+        <nav class="nav_home">
+            <ul>
+                <li><button class="btn nav_btn" onclick="location.href='/';">Home</button></li>
+                <li><button class="btn nav_btn" onclick="location.href='/results';">Results</button></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Container for the detected image details -->
+    <div id="detected-image-details"></div>
+    <!-- Container for displaying error messages -->
+    <div id="error-message"></div>
+
+
+</body>
+<script>
+    let dataString = "{{detected_result}}" // declare a variable "dataString" and assign it the value of the "detected_result" 
+let root_path = "{{root_path}}" // declare a variable "root_path" and assign it the value of the "root_path" 
+let data = JSON.parse(dataString.replace(/&#39;/g, '"')); // declare a variable "data" and assign it the parsed JSON value of the "dataString" variable after replacing any instances of "&#39;" with double quotes
+if (data) { // check if "data" is  not null, undefined, 0, false, or an empty string
+    var html = // declare a variable "html" 
+            ` 
+    <div class="container">
+        <div class="row margin_top100">
+            <div class="col-md-12">
+                <h3>Objects Detected:${data.objects_detected}</h3>
+            </div>
+            <div class="col-md-6">
+                <div class="image-container">
+                    <h3>Non-classified Image</h3>
+                    <img src="${root_path + data.non_classified_image}" class="img-fluid" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="image-container">
+                    <h3>Classified Image</h3>
+                    <img src="${root_path + data.classified_image}" class="img-fluid" />
+                </div>
+               
+            </div>
+            <div class="col-md-12 margin_top100 ">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Accuracy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.class_and_associated_probabilities.map((probability, index) => `
+                        <tr>
+                            <td>${probability.class} </td>
+                            <td>${(probability.accuracy * 100).toFixed(2)}%</td>
+                        </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-12  padding_bottom100">
+                <button class="btn nav_btn active" onclick="location.href='/results';">See all Results</button>
+            </div>
+        </div>
+    </div>
+    `;
+        var container = document.getElementById('detected-image-details'); // declare a variable "container" and assign it the HTML element with the ID "detected-image-details"
+        container.innerHTML = html; // set the HTML content of the "container" element to the value of the "html" variable
+    }
+
+    let error = "{{error}}" // declare a variable "error" and assign it the value of the "error" template variable,
+    if (error) { // check if "error" is truthy
+        var errorMessage = document.getElementById("error-message"); // declare a variable "errorMessage" and assign it the HTML element with the ID "error-message"
+        errorMessage.innerHTML = error; // set the HTML content of the "errorMessage" element to the value of the "error" variable
+        errorMessage.style.display = "block"; // set the "display" CSS property of the "errorMessage" element to "block"
+    }
+
+</script>
+
+</html>
