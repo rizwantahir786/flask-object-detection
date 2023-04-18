@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   flask-app:
-    build: .
+    # build: .
+    image: rizwantahir/flask-object-detection:flask_app-v1.0
     ports:
       - 5000:5000
       
